@@ -23,6 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $_SESSION['admin'] = $identity;
       header("Location: /virtualvet2/views/admin/dashboard.php");
       exit();
+    }else if ($identity->role == 'veterinario') {
+      $_SESSION['veterinario'] = $identity;
+      header("Location: /virtualvet2/views/users_vet/principal.php");
+      exit();
     }
   } else {
     $_SESSION['error_login'] = 'Identificación fallida !!';

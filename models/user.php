@@ -114,4 +114,16 @@ class UserModel extends Connection
         $query = "SELECT * FROM USERS WHERE role = '$rol'";
         return parent::findAll($query);
     }
+    function getId()
+    {
+        $query = "SELECT id FROM users WHERE email = '{$this->getEmail()}'";
+        $result = parent::findOne($query);
+
+        if (is_object($result) && $result->num_rows == 1) {
+            $user = $result->fetch_object();
+            return $user->id;
+        }
+
+        return null;
+    }
 }
