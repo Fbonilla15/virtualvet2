@@ -7,6 +7,7 @@ class UserModel extends Connection
     private $email;
     private $password;
     private $identification;
+    private $name;
 
     function getIdentification()
     {
@@ -17,10 +18,19 @@ class UserModel extends Connection
     {
         return mysqli_real_escape_string($this->connection, $this->email);
     }
-
+   
     function getPassword()
     {
         return password_hash($this->connection->real_escape_string($this->password), PASSWORD_BCRYPT, ['cost' => 4]);
+    }
+    function getName()
+    {
+        return mysqli_real_escape_string($this->connection, $this->name);
+    }
+
+    function setName($name)
+    {
+        $this->name = $name;
     }
 
     function setIdentification($identification)
@@ -60,41 +70,41 @@ class UserModel extends Connection
     }
 
     public function createUser()
-    {
-        $query = "SELECT * FROM users WHERE email = '{$this->getEmail()}' OR identification = {$this->getIdentification()}";
-        $data = parent::findOne($query);   
-        
-        if (is_string($data)) {
-            $query = "INSERT INTO users (identification, email, password, role) VALUES ('{$this->getIdentification()}', '{$this->getEmail()}', '{$this->getPassword()}', 'user');";
-            $save = parent::save($query);
-            $result = false;
-            if ($save) {
-                $result = true;
-            }
-        }else{
-            $result = false;
-        }
-        return $result;
-    }
+{
+    $query = "SELECT * FROM users WHERE email = '{$this->getEmail()}' OR identification = {$this->getIdentification()}";
+    $data = parent::findOne($query);   
 
-    public function createUser_vet()
-    {
-        $query = "SELECT * FROM users WHERE email = '{$this->getEmail()}' OR identification = {$this->getIdentification()}";
-        $data = parent::findOne($query);   
-        
-        if (is_string($data)) {
-            $query = "INSERT INTO users (identification, email, password, role) VALUES ('{$this->getIdentification()}', '{$this->getEmail()}', '{$this->getPassword()}', 'veterinario');";
-            $save = parent::save($query);
-            $result = false;
-            if ($save) {
-                $result = true;
-            }
-        }else{
-            $result = false;
+    if (is_string($data)) {
+        $query = "INSERT INTO users (identification, name, email, password, role) VALUES ('{$this->getIdentification()}', '{$this->getName()}', '{$this->getEmail()}', '{$this->getPassword()}', 'user');";
+        $save = parent::save($query);
+        $result = false;
+        if ($save) {
+            $result = true;
         }
-        return $result;
+    } else {
+        $result = false;
     }
+    return $result;
+}
+
+public function createUser_vet()
+{
+    $query = "SELECT * FROM users WHERE email = '{$this->getEmail()}' OR identification = {$this->getIdentification()}";
+    $data = parent::findOne($query);   
     
+    if (is_string($data)) {
+        $query = "INSERT INTO users (identification, name, email, password, role) VALUES ('{$this->getIdentification()}', '{$this->getName()}', '{$this->getEmail()}', '{$this->getPassword()}', 'veterinario');";
+        $save = parent::save($query);
+        $result = false;
+        if ($save) {
+            $result = true;
+        }
+    } else {
+        $result = false;
+    }
+    return $result;
+}
+
 
     
 

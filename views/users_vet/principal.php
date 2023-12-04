@@ -35,25 +35,25 @@
             <!-- Menú de navegación -->
             <ul class="flex">
                 <li class="mr-6">
-                    <a href="#" class="flex items-center text-white hover:text-gray-300">
+                    <a href="principal.php" class="flex items-center text-white hover:text-yellow-500">
                         <i class="fas fa-home mr-2"></i>
                         Inicio
                     </a>
                 </li>
                 <li class="mr-6">
-                    <a href="#" class="flex items-center text-white hover:text-gray-300">
+                    <a href="citasvet.php" class="flex items-center text-white hover:text-blue-500">
                         <i class="fas fa-calendar-alt mr-2"></i>
                         Citas
                     </a>
                 </li>
                 <li class="mr-6">
-                    <a href="#" class="flex items-center text-white hover:text-gray-300">
+                    <a href="#" class="flex items-center text-white hover:text-green-500">
                         <i class="fas fa-comments mr-2"></i>
                         Chats
                     </a>
                 </li>
                 <li>
-                    <a href="../../controllers/logout.php" class="flex items-center text-white hover:text-gray-300">
+                    <a href="../../controllers/logout.php" class="flex items-center text-white hover:text-red-500">
                         <i class="fas fa-sign-out-alt mr-2"></i>
                         Cerrar Sesión
                     </a>

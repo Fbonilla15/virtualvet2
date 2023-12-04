@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $identification = isset($_POST['identification']) ? $_POST['identification'] : false;
     $email = isset($_POST['email']) ? $_POST['email'] : false;
     $password = isset($_POST['password']) ? $_POST['password'] : false;
+    $name = isset($_POST['name']) ? $_POST['name'] : false;
 
     if ($identification && $email && $password) {
 
@@ -16,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario->setIdentification($identification);
         $usuario->setEmail($email);
         $usuario->setPassword($password);
+        $usuario ->setName($name);
 
         $save = $usuario->createUser();    
         if ($save) {
